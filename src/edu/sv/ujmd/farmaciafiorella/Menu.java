@@ -5,6 +5,7 @@
 package edu.sv.ujmd.farmaciafiorella;
 
 import java.util.Scanner;
+import edu.sv.ujmd.farmaciafiorella.Inventario;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    public static int menuprincipal() {
+    public static void menuprincipal() {
         Scanner teclado;
         teclado = new Scanner(System.in);
         int op;
@@ -26,6 +27,27 @@ public class Menu {
         );
 
         op = teclado.nextInt();
-        return op;
+        
+        boolean salir = false;
+        
+        
+        do {
+            switch (op) {
+                case 1:
+                    
+                    break;
+
+                case 2:
+                    Inventario.main(null);
+                    break;
+
+                case 3:
+                    System.out.println("Cerrando el programa...");
+                    System.exit(0);
+                    break;
+            }
+        } while (!salir);
     }
+    
+    
 }
