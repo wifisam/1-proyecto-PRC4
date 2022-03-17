@@ -36,7 +36,10 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.println("Cerrando el programa...");
+                    Login.cambiarContrasena();
+                    break;
+                case 4:
+                    System.out.println("Saliendo del sistema...");
                     System.exit(0);
                     break;
             }

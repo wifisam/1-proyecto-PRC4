@@ -63,7 +63,7 @@ public class Login {
 
             } else {
                 System.out.println("acceso denegado");
-                
+
                 
             }
 
@@ -72,6 +72,14 @@ public class Login {
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+    }
+
+    public static void cambiarContrasena() {
+        String contrasena;
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Ingrese su nueva contraseña: ");
+        contrasena = teclado.nextLine();
+        Menu.menuprincipal();
     }
 }
