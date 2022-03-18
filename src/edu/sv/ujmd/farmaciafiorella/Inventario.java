@@ -7,25 +7,37 @@ package edu.sv.ujmd.farmaciafiorella;
 import java.util.Scanner;
 import edu.sv.ujmd.farmaciafiorella.Menu;
 
-/**
- *
- * @author enaq9
- */
 public class Inventario {
 
+    int codigoProducto[];
+    String producto[];
+    double precio[];
+    int cantidad[];
+
+    public Inventario() {
+        //Asignacion de los datos
+        codigoProducto = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        producto = new String[]{"Acetaminofen", "Panadol", "Clorfeniramina", "Diclofenac", "Jarabe para Tos", "SudaGrip", "Micardis", "Gammaflux", "Metocarbamol", "Anaflat"};
+        precio = new double[]{0.10, 5.00, 3.00, 0.50, 3.00, 0.50, 0.80, 0.30, 2.25, 2.75, 1.80, 3.25};
+        cantidad = new int[]{5, 10, 18, 3, 6, 8, 5, 2, 7, 20};
+    }
+
     public static void main(String[] args) {
-        // define la matriz
-        // Se utiliza para almacenar marca, tamaño, precio, inventario
+        // definicion de la matriz del inventario
+        // Se utiliza para almacenar codigo, producto, precio y la cantidad
         int[] codigoProducto = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         String[] producto = {"Acetaminofen", "Panadol", "Clorfeniramina", "Diclofenac", "Jarabe para Tos", "SudaGrip", "Micardis", "Gammaflux", "Metocarbamol", "Anaflat"};
         double[] precio = {0.10, 5.00, 3.00, 0.50, 3.00, 0.50, 0.80, 0.30, 2.25, 2.75, 1.80, 3.25};
         int[] cantidad = {5, 10, 18, 3, 6, 8, 5, 2, 7, 20};
 
         while (true) {
+            //Se carga el menu, luego se genera el switch donde si la eleccion es TODOS, muestra todo el inventario, si ingresa el nombre de un medicamento, muestra la informacion de ese medicamento, y si ingresa la palabra regresar, regresa al menu.
             String choose = menuInventario();
             switch (choose) {
                 // Ver lista de inventario
                 case "TODOS":
+                case "todos":
+                case "Todos":
                     imprimirInventario(codigoProducto, producto, precio, cantidad);
                     break;
                 case "Acetaminofen":
@@ -102,7 +114,7 @@ public class Inventario {
                 case "regresar":
                 case "Regresar":
                     Menu.menuprincipal();
-                break;
+                    break;
                 default:
                     System.out.println("Lo sentimos, esta función no está disponible actualmente");
                     break;
@@ -111,6 +123,7 @@ public class Inventario {
     }
 
     public static void cambiarCantidad(String[] producto, int[] cantidad) {
+        //Metodo para cambiar la cantidad segun el producto ingresado
         Scanner ran = new Scanner(System.in);
         //int number_1 = ran.nextInt();
         for (int i = 0; i < producto.length; i++) {
@@ -120,6 +133,8 @@ public class Inventario {
     }
 
     public static void imprimirInventario(int[] codigoProducto, String[] producto, double[] precio, int[] cantidad) {
+        //Metodo para mostrar el inventario
+        Scanner s = new Scanner(System.in);
         int totalInventario = 0;
         double totalDinero = 0;
         System.out.println("—————————————— Inventario de Farmacia Fiorella ————————————————");
@@ -132,6 +147,10 @@ public class Inventario {
 
         System.out.println("Stock total: " + totalInventario);
         System.out.println("Cantidad en dinero: $" + totalDinero);
+        
+        s.nextLine(); //Limpiamos buffer del System.in
+        System.out.println("\n\t\tPRESIONE ENTER PARA CONTINUAR..."); //Mensaje en pantalla
+        s.nextLine(); //El programa se detiene hasta que se presione una tecla
     }
 
     /*
@@ -139,10 +158,11 @@ public class Inventario {
 		 @return devuelve la función seleccionada por el usuario
      */
     public static String menuInventario() {
+        //Menu de inventario
         System.out.println("------------- Gestión de inventario ------------");
-        System.out.println("1. TODOS: Mostrará todo el inventario");
-        System.out.println("2. Nombre del producto: mostrara solo ese producto");
-        System.out.println("3.REGRESAR: regresara al menu principal");
+        System.out.println("TODOS: Mostrará todo el inventario");
+        System.out.println("Nombre del producto: mostrara solo ese producto");
+        System.out.println("REGRESAR: regresara al menu principal");
         System.out.println("Seleccione una opción:");
         Scanner ran = new Scanner(System.in);
         String op = ran.nextLine();
